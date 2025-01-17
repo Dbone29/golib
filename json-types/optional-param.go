@@ -1,4 +1,4 @@
-package json
+package jsontypes
 
 import "encoding/json"
 
