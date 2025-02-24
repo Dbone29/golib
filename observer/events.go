@@ -25,8 +25,13 @@ func (m *BaseManager[T]) Add(n string, l Listener[T]) {
 	}
 }*/
 
-func (m *BaseManager[T]) Invoke(n string, args T) {
+type Event[T any] struct {
+	Kind string
+	Args T
+}
+
+func (m *BaseManager[T]) Invoke(n string, args Event[T]) {
 	for _, ls := range m.Lst[n] {
-		ls(args)
+		ls(args.Args)
 	}
 }
