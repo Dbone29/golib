@@ -8,15 +8,15 @@ type Manager[T any] interface {
 }
 
 type BaseManager[T any] struct {
-	lst map[string][]Listener[T]
+	Lst map[string][]Listener[T]
 }
 
 func (m *BaseManager[T]) Invoke(n string, args T) {
-	for _, ls := range m.lst[n] {
+	for _, ls := range m.Lst[n] {
 		ls(args)
 	}
 }
 
 func (m *BaseManager[T]) Add(n string, l Listener[T]) {
-	m.lst[n] = append(m.lst[n], l)
+	m.Lst[n] = append(m.Lst[n], l)
 }
